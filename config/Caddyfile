@@ -1,0 +1,23 @@
+domain.com {
+	encode gzip
+	tls /etc/caddy/cert/cert.pem /etc/caddy/cert/key.pem
+	root * /www/wwwroot/typecho
+	@key1 {
+		not file
+		path_regexp key1 '(.*)'
+	}
+	rewrite @key1 /index.php{re.key1.1}
+	php_fastcgi php:9000 {
+		index index.php
+	}
+	log {
+		format console {
+			time_format "iso8601"
+		}
+		output file "/www/wwwlogs/access.log" {
+			roll_keep 3
+			roll_keep_for 7d
+		}
+	}
+	file_server
+}

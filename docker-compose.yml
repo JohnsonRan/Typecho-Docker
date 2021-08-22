@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+    caddy:
+        restart: unless-stopped
+        image: caddy:latest
+        container_name: server-caddy
+        ports:
+            - "443:443"
+        volumes:
+            - "./data/typecho:/www/wwwroot/typecho"
+            - "./config:/etc/caddy"
+            - "./logs:/www/wwwlogs"
+        networks:
+            - typecho-network
+    php:
+        restart: unless-stopped
+        container_name: server-php
+        build:
+            context: app/php
+        volumes:
+            - "./data:/www/wwwroot"
+        networks:
+            - typecho-network
+networks:
+    typecho-network:
+        driver: bridge
