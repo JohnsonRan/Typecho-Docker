@@ -30,6 +30,8 @@ RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 
 RUN echo -e '[PHP]\ndate.timezone = "Asia/Shanghai"\n' > /usr/local/etc/php/conf.d/tzone.ini
 
+COPY ./run.sh ./
+
 ENV LANG C.UTF-8
 
 ENTRYPOINT ["sh", "./run.sh"]
