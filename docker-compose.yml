@@ -21,6 +21,27 @@ services:
             - "./data:/www/wwwroot"
         networks:
             - typecho-network
+    mysql:
+        restart: unless-stopped
+        image: mysql:latest
+        container_name: server-mysql
+        ports:
+            - "127.0.0.1:3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=PMA_PASSWD
+        networks:
+            - typecho-network
+    pma:
+        restart: unless-stopped
+        image: phpmyadmin:latest
+        container_name: server-pma
+        ports:
+            - "8283:80"
+        environment:
+            - PMA_HOST=server-mysql
+            - PMA_PORT=3306
+        networks:
+            - typecho-network
 networks:
     typecho-network:
         driver: bridge
