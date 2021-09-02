@@ -15,8 +15,7 @@ services:
     php:
         restart: unless-stopped
         container_name: server-php
-        build:
-            context: app/php
+        image: johnsonran/server-php:latest
         volumes:
             - "./data:/www/wwwroot"
         networks:

@@ -3,7 +3,7 @@
 想用Typecho却不想在宿主机安装LNMP/LAMP之类的环境可以试试这个项目
 
 ## 环境
-`php:8.0.9-fpm-alpine` , `caddy:latest` , `mysql:latest` , `phpmyadmin:latest` .  
+`php:8.0.10-fpm-alpine` , `caddy:latest` , `mysql:latest` , `phpmyadmin:latest` .  
 默认已安装 `pdo_mysql` 和 `pdo_sqlite` 扩展，可使用MySQL或SQLite
 
 ## 目录结构
@@ -32,7 +32,11 @@
 从 [这里](https://github.com/typecho/typecho/archive/refs/heads/master.zip) 下载 Typecho 源码存放到 `data/typecho` (如果没有则新建一个)  
 修改 `Caddyfile` 首行的 `domain.com` 为自己的域名  
 ## 注意
-- **如果是国内机器请自行删除 `app/php/Dockerfile` 第 `7` 行注释**  
+- **默认使用预编译的 `server-php` ，如想使用自己机器编译请自行修改 `docker-compose.yml` 第 `18` 行为**
+```
+build:
+            context: app/php
+``` 
 - **MySQL默认关闭外网访问，如想启用请删除 `docker-compose.yml` 第 `29` 行的 `127.0.0.1:` 并修改第 `41` 行的 `server-mysql` 为自己服务器的公网IP**  
 - **phpMyAdmin默认公网访问端口为 `8283` 如想更改请修改第 `39` 行的 `8283` 为想设置的端口**  
 - **修改 `docker-compose.yml` 第 `31` 行的 `PMA_PASSWD` 为自己想设置的 MySQL 密码**  
