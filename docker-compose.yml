@@ -20,14 +20,14 @@ services:
             - "./data:/www/wwwroot"
         networks:
             - typecho-network
-    mysql:
+    mariadb:
         restart: unless-stopped
-        image: mysql:latest
-        container_name: server-mysql
+        image: mariadb:10.5.12
+        container_name: server-mariadb
         ports:
             - "127.0.0.1:3306:3306"
         environment:
-            - MYSQL_ROOT_PASSWORD=PMA_PASSWD
+            - MARIADB_ROOT_PASSWORD=PMA_PASSWD
         networks:
             - typecho-network
     pma:
@@ -37,7 +37,7 @@ services:
         ports:
             - "8283:80"
         environment:
-            - PMA_HOST=server-mysql
+            - PMA_HOST=server-mariadb
             - PMA_PORT=3306
         networks:
             - typecho-network
