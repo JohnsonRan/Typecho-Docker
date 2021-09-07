@@ -55,6 +55,5 @@ https://docs.docker.com/compose/install/
 git clone https://github.com/JohnsonRan/Typecho-Docker
 cd Typecho-Docker
 git clone https://github.com/typecho/typecho ./data/typecho
-rm -rf ./data/typecho/.git
-docker-composed up -d
+docker-compose up -d
 ```
