@@ -22,7 +22,7 @@ services:
             - typecho-network
     mariadb:
         restart: unless-stopped
-        image: mariadb:10.5.12
+        image: mariadb:latest
         container_name: server-mariadb
         ports:
             - "127.0.0.1:3306:3306"
