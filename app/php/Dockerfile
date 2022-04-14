@@ -1,4 +1,4 @@
-FROM php:8.0.10-fpm-alpine
+FROM php:8.1.4-fpm-alpine
 
 RUN curl --silent --show-error https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
@@ -25,8 +25,7 @@ RUN pecl install redis \
     && docker-php-ext-install gd \
     && docker-php-ext-enable redis
 
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    && echo 'Asia/Shanghai' > /etc/timezone
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 RUN echo -e '[PHP]\ndate.timezone = "Asia/Shanghai"\n' > /usr/local/etc/php/conf.d/tzone.ini
 

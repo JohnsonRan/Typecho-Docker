@@ -3,7 +3,7 @@
 想用Typecho却不想在宿主机安装LNMP/LAMP之类的环境可以试试这个项目
 
 ## 环境
-`php:8.0.10-fpm-alpine` , `caddy:latest` , `mariadb:latest` , `phpmyadmin:latest` .  
+`php:8.1.4-fpm-alpine` , `caddy:latest` , `mariadb:latest` , `phpmyadmin:latest` .  
 默认已安装 `pdo_mysql` 和 `pdo_sqlite` 扩展，可使用MySQL或SQLite
 
 ## 目录结构
