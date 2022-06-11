@@ -1,4 +1,4 @@
-FROM php:8.1.4-fpm-alpine
+FROM php:8.1.7-fpm-alpine
 
 RUN curl --silent --show-error https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer

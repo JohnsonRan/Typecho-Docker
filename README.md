@@ -3,7 +3,7 @@
 想用Typecho却不想在宿主机安装LNMP/LAMP之类的环境可以试试这个项目
 
 ## 环境
-`php:8.1.4-fpm-alpine` , `caddy:latest` , `mariadb:latest` , `phpmyadmin:latest` .  
+`php:8.1.7-fpm-alpine` , `caddy:latest` , `mariadb:latest` , `phpmyadmin:latest` .  
 默认已安装 `pdo_mysql` 和 `pdo_sqlite` 扩展，可使用MySQL或SQLite
 
 ## 目录结构
@@ -55,5 +55,5 @@ https://docs.docker.com/compose/install/
 git clone https://github.com/JohnsonRan/Typecho-Docker
 cd Typecho-Docker
 git clone https://github.com/typecho/typecho ./data/typecho
-docker-compose up -d
+docker compose up -d
 ```
